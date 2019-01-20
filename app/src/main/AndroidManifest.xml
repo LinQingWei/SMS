@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <!-- Application needs READ_PHONE permissions for subId -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".SmsApplication"
@@ -101,6 +104,26 @@
                 <action android:name="freeme.action.intent.DELIVERED_SMS" />
             </intent-filter>
         </receiver>
+
+        <receiver android:name=".receiver.CmdlineReceiver" >
+            <intent-filter>
+                <action android:name="freeme.action.intent.GET_PHONE_NUMBER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="freeme.action.intent.SET_ECHO_SERVER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="freeme.action.intent.GET_ECHO_SERVER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="freeme.action.intent.SET_REPORT_URL" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="freeme.action.intent.GET_REPORT_URL" />
+            </intent-filter>
+        </receiver>
+
 
         <service
             android:name=".service.NoConfirmationSmsSendService"
